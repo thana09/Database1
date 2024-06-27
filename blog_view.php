@@ -1,6 +1,16 @@
 <?php
-include "connect.php";
+ob_start();
+session_start();
+echo "<h3> Logged : $_SESSION[email]</h3>" ;
+if (isset($_SESSION['loggedin'])) {
+  echo "<p>";
+  echo"<a href='blog_view.php'> แสดง Blog </a>|";
+  echo"<a href='blog_form.php'> เพิ่ม Blog </a>|";
+  echo "<a href='logout.php'> Logout </a>";
+  echo "</p>" ;
+}
 
+include "connect.php";
 $sql = "SELECT * FROM blog";
 $result = $conn->query($sql);
 
